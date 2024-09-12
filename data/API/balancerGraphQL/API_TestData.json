@@ -1,0 +1,55 @@
+{
+    "AllChain": [
+        "MAINNET",
+        "ARBITRUM",
+        "AVALANCHE",
+        "BASE",
+        "GNOSIS",
+        "POLYGON",
+        "ZKEVM",
+        "OPTIMISM",
+        "MODE",
+        "FRAXTAL"
+    ],
+    "AllPoolType": [
+        "WEIGHTED",
+        "STABLE",
+        "COMPOSABLE_STABLE",
+        "META_STABLE",
+        "LIQUIDITY_BOOTSTRAPPING",
+        "GYRO",
+        "GYRO3",
+        "GYROE",
+        "COW_AMM"
+    ],
+    "Ethereum": [
+        "MAINNET"
+    ],
+    "Arbitrum": [
+        "ARBITRUM"
+    ],
+    "Avalanche": [
+        "AVALANCHE"
+    ],
+    "Base": [
+        "BASE"
+    ],
+    "Fraxtal": [
+        "FRAXTAL"
+    ],
+    "Gnosis": [
+        "GNOSIS"
+    ],
+    "Mode": [
+        "MODE"
+    ],
+    "Optimism": [
+        "OPTIMISM"
+    ],
+    "Polygon": [
+        "POLYGON"
+    ],
+    "PolygonzkEVM": [
+        "ZKEVM"
+    ]
+}
