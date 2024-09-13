@@ -20,15 +20,51 @@ test.beforeEach(async ({ page, request }) => {
   API = new api(request)
 })
 
+test.afterEach(async ({ page, request }) => {
+  // await page.close()
+})
+
 test.describe.configure({ mode: 'parallel' });
 
 test.describe('Positive Scenario', async () => {
 
   // test.use({ storageState: "libs/auth.json" })
 
-  test('TC1_Validate Pool Page', { tag: '@Positive' }, async () => {
+  test('TC1_Validate Ethereum One Balancer Pool data', { tag: '@Positive' }, async () => {
     //Validating the UI
+    await App.poolsPage.networkFilter(testData.Ethereum)
+    const PoolID = await App.poolPage.gotoFirstPoolAndReturnID() ?? ""
     await App.poolPage.isUserOnPoolPage(true)
+    const responseBody = await API.post.call_BalancerAPI_toFetch_OnePoolData(Endpoint, "MAINNET", PoolID)
+    // console.log(responseBody.data.count);
+    App.assert.areEqual(PoolID, responseBody.data.pool.id, "Validation of Total pools in UI with API")
+    await App.poolPage.validatePoolCreationDate(responseBody.data.pool.createTime)
+    await App.poolPage.validatePoolType(responseBody.data.pool.type)
+    if ((responseBody.data.pool.type).toLowerCase() == "weighted")
+      await App.poolPage.validatePoolWeight(responseBody.data.pool.poolTokens)
+  })
+
+  test('TC2_Validate Arbitrum One Balancer Pool data', { tag: '@Positive' }, async () => {
+    //Validating the UI
+    await App.poolsPage.networkFilter(testData.Arbitrum)
+    const PoolID = await App.poolPage.gotoFirstPoolAndReturnID() ?? ""
+    await App.poolPage.isUserOnPoolPage(true)
+    const responseBody = await API.post.call_BalancerAPI_toFetch_OnePoolData(Endpoint, testData.Arbitrum[0], PoolID)
+    // console.log(responseBody.data.count);
+    App.assert.areEqual(PoolID, responseBody.data.pool.id, "Validation of Total pools in UI with API")
+    await App.poolPage.validatePoolCreationDate(responseBody.data.pool.createTime)
+    await App.poolPage.validatePoolType(responseBody.data.pool.type)
+  })
+
+  test('TC3_Validate Avalanche One Balancer Pool data', { tag: '@Positive' }, async () => {
+    //Validating the UI
+    await App.poolsPage.networkFilter(testData.Avalanche)
+    const PoolID = await App.poolPage.gotoFirstPoolAndReturnID() ?? ""
+    await App.poolPage.isUserOnPoolPage(true)
+    const responseBody = await API.post.call_BalancerAPI_toFetch_OnePoolData(Endpoint, testData.Avalanche[0], PoolID)
+    // console.log(responseBody.data.count);
+    App.assert.areEqual(PoolID, responseBody.data.pool.id, "Validation of Total pools in UI with API")
+    await App.poolPage.validatePoolCreationDate(responseBody.data.pool.createTime)
   })
 
 })

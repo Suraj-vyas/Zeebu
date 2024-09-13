@@ -51,5 +51,21 @@
     ],
     "PolygonzkEVM": [
         "ZKEVM"
-    ]
+    ],
+    "Weighted": [
+        "Weighted"
+    ],
+    "Stable": [
+        "Stable"
+    ],
+    "LBP": [
+        "LBP"
+    ],
+    "Gyro": [
+        "Gyro"
+    ],
+    "Cow": [
+        "CoW AMM"
+    ],
+    "TVL": "3300000"
 }

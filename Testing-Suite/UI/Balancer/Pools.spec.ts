@@ -9,35 +9,42 @@ var API: api
 interface requestBody {
   chainIn: string[];
   poolTypeIn: string[];
+  TVL: string;
 }
 
 const Endpoint = `https://api-v3.balancer.fi/graphql`
 
 test.beforeEach(async ({ page, request }) => {
-  test.slow()
+  // test.slow()
   App = new app(page)
   await App.webPage.NavigateToUrl('https://balancer.fi/pools')
   API = new api(request)
 })
 
-test.describe.configure({ mode: 'parallel' });
+test.afterEach(async ({ page }) => {
+  await page.close()
+})
+
+test.describe.configure({ mode: 'serial' });
 
 test.describe('Positive Scenario', async () => {
 
   // test.use({ storageState: "libs/auth.json" })
 
   test('TC1_Validate TotalPools for All Network', { tag: '@Positive' }, async () => {
-    //Validating the UI
-    await App.poolsPage.isUserOnPoolsPage(true)
-    const totalPools = await App.poolsPage.totalPools()
-    //Validating the API
+    //Data Setup
     const requestPayload: requestBody = {
       chainIn: testData.AllChain,
-      poolTypeIn: testData.AllPoolType
+      poolTypeIn: testData.AllPoolType,
+      TVL: "0"
     };
+    //Validating the UI
+    await App.poolsPage.isUserOnPoolsPage(true)
+    await App.poolsPage.networkFilter(requestPayload.chainIn)
+    const totalPools = await App.poolsPage.totalPools()
     const responseBody = await API.post.call_BalancerAPI_toFetch_AllPoolsData(Endpoint, requestPayload)
     // console.log(responseBody.data.count);
-    expect(totalPools).toEqual(responseBody.data.count)
+    App.assert.areEqual(totalPools, responseBody.data.count, "Validation of Total pools in UI with API")
 
   })
 
@@ -45,7 +52,8 @@ test.describe('Positive Scenario', async () => {
     //Data Setup
     const requestPayload: requestBody = {
       chainIn: testData.Ethereum,
-      poolTypeIn: testData.AllPoolType
+      poolTypeIn: testData.AllPoolType,
+      TVL: "0"
     };
     //Validating the UI
     await App.poolsPage.isUserOnPoolsPage(true)
@@ -63,7 +71,8 @@ test.describe('Positive Scenario', async () => {
     //Data Setup
     const requestPayload: requestBody = {
       chainIn: testData.Arbitrum,
-      poolTypeIn: testData.AllPoolType
+      poolTypeIn: testData.AllPoolType,
+      TVL: "0"
     };
     //Validating the UI
     await App.poolsPage.isUserOnPoolsPage(true)
@@ -80,7 +89,8 @@ test.describe('Positive Scenario', async () => {
     //Data Setup
     const requestPayload: requestBody = {
       chainIn: testData.Avalanche,
-      poolTypeIn: testData.AllPoolType
+      poolTypeIn: testData.AllPoolType,
+      TVL: "0"
     };
     //Validating the UI
     await App.poolsPage.isUserOnPoolsPage(true)
@@ -97,7 +107,8 @@ test.describe('Positive Scenario', async () => {
     //Data Setup
     const requestPayload: requestBody = {
       chainIn: testData.Base,
-      poolTypeIn: testData.AllPoolType
+      poolTypeIn: testData.AllPoolType,
+      TVL: "0"
     };
     //Validating the UI
     await App.poolsPage.isUserOnPoolsPage(true)
@@ -114,7 +125,8 @@ test.describe('Positive Scenario', async () => {
     //Data Setup
     const requestPayload: requestBody = {
       chainIn: testData.Fraxtal,
-      poolTypeIn: testData.AllPoolType
+      poolTypeIn: testData.AllPoolType,
+      TVL: "0"
     };
     //Validating the UI
     await App.poolsPage.isUserOnPoolsPage(true)
@@ -131,7 +143,8 @@ test.describe('Positive Scenario', async () => {
     //Data Setup
     const requestPayload: requestBody = {
       chainIn: testData.Gnosis,
-      poolTypeIn: testData.AllPoolType
+      poolTypeIn: testData.AllPoolType,
+      TVL: "0"
     };
     //Validating the UI
     await App.poolsPage.isUserOnPoolsPage(true)
@@ -148,7 +161,8 @@ test.describe('Positive Scenario', async () => {
     //Data Setup
     const requestPayload: requestBody = {
       chainIn: testData.Mode,
-      poolTypeIn: testData.AllPoolType
+      poolTypeIn: testData.AllPoolType,
+      TVL: "0"
     };
     //Validating the UI
     await App.poolsPage.isUserOnPoolsPage(true)
@@ -165,7 +179,8 @@ test.describe('Positive Scenario', async () => {
     //Data Setup
     const requestPayload: requestBody = {
       chainIn: testData.Optimism,
-      poolTypeIn: testData.AllPoolType
+      poolTypeIn: testData.AllPoolType,
+      TVL: "0"
     };
     //Validating the UI
     await App.poolsPage.isUserOnPoolsPage(true)
@@ -182,7 +197,8 @@ test.describe('Positive Scenario', async () => {
     //Data Setup
     const requestPayload: requestBody = {
       chainIn: testData.Polygon,
-      poolTypeIn: testData.AllPoolType
+      poolTypeIn: testData.AllPoolType,
+      TVL: "0"
     };
     //Validating the UI
     await App.poolsPage.isUserOnPoolsPage(true)
@@ -199,7 +215,8 @@ test.describe('Positive Scenario', async () => {
     //Data Setup
     const requestPayload: requestBody = {
       chainIn: testData.PolygonzkEVM,
-      poolTypeIn: testData.AllPoolType
+      poolTypeIn: testData.AllPoolType,
+      TVL: "0"
     };
     //Validating the UI
     await App.poolsPage.isUserOnPoolsPage(true)
@@ -212,8 +229,56 @@ test.describe('Positive Scenario', async () => {
     App.assert.areEqual(totalPools, responseBody.data.count, "Validation of Total pools in UI with API")
   })
 
+  test('TC12_Validate PoolType Filter for Weighted', { tag: '@Positive' }, async () => {
+    //Data Setup
+    const poolType = testData.Weighted
+    //Validating the UI
+    await App.poolsPage.isUserOnPoolsPage(true)
+    await App.poolsPage.validatePoolTypesFilter(poolType)
+  })
+
+  test('TC13_Validate PoolType Filter for Stable', { tag: '@Positive' }, async () => {
+    //Data Setup
+    const poolType = testData.Stable
+    //Validating the UI
+    await App.poolsPage.isUserOnPoolsPage(true)
+    await App.poolsPage.validatePoolTypesFilter(poolType)
+  })
+
+  test('TC14_Validate PoolType Filter for LBP', { tag: '@Positive' }, async () => {
+    //Data Setup
+    const poolType = testData.LBP
+    //Validating the UI
+    await App.poolsPage.isUserOnPoolsPage(true)
+    await App.poolsPage.validatePoolTypesFilter(poolType)
+  })
+
+  test('TC15_Validate PoolType Filter for Cow', { tag: '@Positive' }, async () => {
+    //Data Setup
+    const poolType = testData.Cow
+    //Validating the UI
+    await App.poolsPage.isUserOnPoolsPage(true)
+    await App.poolsPage.validatePoolTypesFilter(poolType)
+  })
+
+  test('TC16_Validate TotalPools Filter for Min TVL', async ({ page }) => {
+    //Data Setup
+    const requestPayload: requestBody = {
+      chainIn: testData.Ethereum,
+      poolTypeIn: testData.AllPoolType,
+      TVL: testData.TVL
+    };
+    await App.poolsPage.isUserOnPoolsPage(true)
+    await App.poolsPage.networkFilter(requestPayload.chainIn)
+    await App.poolsPage.setTVLSlide(requestPayload.TVL)
+    const totalPools = await App.poolsPage.totalPools()
+    const responseBody = await API.post.call_BalancerAPI_toFetch_AllPoolsData(Endpoint, requestPayload)
+    App.assert.areEqual(totalPools, responseBody.data.count, "Validation of Total pools in UI with API")
+  })
+
 })
 
 
 test.describe('Negative Scenario', async () => {
+
 })
