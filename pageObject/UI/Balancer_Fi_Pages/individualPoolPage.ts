@@ -95,12 +95,15 @@ export class individualPoolPage {
 
     async validatePoolType(type: string) {
         await test.step('Validating the Pool Type', async () => {
-            await this.page.waitForSelector(this.poolType_loc, { state: 'attached' })
-            await this.page.locator(this.poolType_loc).scrollIntoViewIfNeeded()
+            await this.page.waitForLoadState('domcontentloaded');
+            // await this.page.locator(this.poolType_loc).scrollIntoViewIfNeeded()
+            await this.page.waitForTimeout(5000)
             const UIPoolType = await this.page.locator(this.poolType_loc).textContent()
             console.log(UIPoolType);
             if (type.toLowerCase() == "composable_stable")
                 type = 'stable'
+            await this.page.evaluate(() => window.scrollTo(0, document.body.scrollHeight));
+            await takeScreenshot(this.page, "Pool Type")
             expect(UIPoolType?.toLowerCase()).toEqual(type.toLowerCase())
             await takeScreenshot(this.page, "Pool Type")
         })

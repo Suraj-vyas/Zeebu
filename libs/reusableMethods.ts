@@ -8,7 +8,6 @@ export class resuableMethods {
     }
 
     async NavigateToUrl(url: string) {
-        await this.page.setViewportSize({ width: 1610, height: 882 })
         await this.page.goto(url, { waitUntil: 'domcontentloaded' })
         await this.page.waitForTimeout(5000)
     }
