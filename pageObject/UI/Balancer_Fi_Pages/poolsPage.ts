@@ -28,6 +28,7 @@ export class poolsPage {
                 await expect(this.page.locator(this.liquidityPoolsTxt_Loc)).toBeVisible()
         })
         await takeScreenshot(this.page, "Pools Page")
+        await this.page.waitForLoadState('load')
     }
 
     async totalPools() {
@@ -43,7 +44,8 @@ export class poolsPage {
             for (var net of network) {
                 if (net == 'MAINNET')
                     net = 'ethereum'
-                await this.page.locator(`${this.networkFilter_Loc}//span[contains(translate(text(), "ABCDEFGHIJKLMNOPQRSTUVWXYZ", "abcdefghijklmnopqrstuvwxyz") , '${net.toLowerCase()}')]`).click()
+                await this.page.locator(`${this.networkFilter_Loc}//span[contains(translate(text(), "ABCDEFGHIJKLMNOPQRSTUVWXYZ", "abcdefghijklmnopqrstuvwxyz") , '${net.toLowerCase()}')]`).first().click()
+                await this.page.waitForTimeout(500)
             }
             await this.page.waitForTimeout(5000)
             await takeScreenshot(this.page, "Network Filter")

@@ -17,7 +17,7 @@ test.afterEach(async ({ page }) => {
     // await page.close()
 })
 
-test.describe.configure({ mode: 'serial' });
+test.describe.configure({ mode: 'parallel' });
 
 test.describe('Positive Scenario', async () => {
 
@@ -86,7 +86,7 @@ test.describe('Positive Scenario', async () => {
 test.describe('Negative Scenario', async () => {
 
 
-    test('TC6_Validate Non-Exit Pool for Ethereum', { tag: '@Positive' }, async () => {
+    test('TC6_Validate Non-Exit Pool for Ethereum', { tag: '@Negative' }, async () => {
         //Validating the User is on Pools Page or not
         await App.poolsPage.isUserOnPoolsPage(true)
         //Applying the Network Filter
@@ -95,7 +95,7 @@ test.describe('Negative Scenario', async () => {
         await App.poolPage.validateNoPoolFound()
     })
 
-    test('TC6_Validate Non-Exit Pool for Arbitrum', { tag: '@Positive' }, async () => {
+    test('TC6_Validate Non-Exit Pool for Arbitrum', { tag: '@Negative' }, async () => {
         //Validating the User is on Pools Page or not
         await App.poolsPage.isUserOnPoolsPage(true)
         //Applying the Network Filter
@@ -104,7 +104,7 @@ test.describe('Negative Scenario', async () => {
         await App.poolPage.validateNoPoolFound()
     })
 
-    test('TC6_Validate Non-Exit Pool for Avalanche', { tag: '@Positive' }, async () => {
+    test('TC6_Validate Non-Exit Pool for Avalanche', { tag: '@Negative' }, async () => {
         //Validating the UI
         //Validating the User is on Pools Page or not
         await App.poolsPage.isUserOnPoolsPage(true)
@@ -114,7 +114,7 @@ test.describe('Negative Scenario', async () => {
         await App.poolPage.validateNoPoolFound()
     })
 
-    test('TC6_Validate Non-Exit Pool for Base', { tag: '@Positive' }, async () => {
+    test('TC6_Validate Non-Exit Pool for Base', { tag: '@Negative' }, async () => {
         //Validating the UI
         //Validating the User is on Pools Page or not
         await App.poolsPage.isUserOnPoolsPage(true)

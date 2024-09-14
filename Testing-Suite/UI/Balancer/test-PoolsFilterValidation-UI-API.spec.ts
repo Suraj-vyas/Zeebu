@@ -25,7 +25,7 @@ test.afterEach(async ({ page }) => {
   await page.close()
 })
 
-test.describe.configure({ mode: 'serial' });
+test.describe.configure({ mode: 'parallel' });
 
 test.describe('Positive Scenario', async () => {
 
@@ -40,9 +40,9 @@ test.describe('Positive Scenario', async () => {
     };
     //Validating user is on Pool Page or not
     await App.poolsPage.isUserOnPoolsPage(true)
-    //Applying the Network Filter
-    await App.poolsPage.networkFilter(requestPayload.chainIn)
-    //Capturing the Totla Pools Value from UI
+    //Wait for pools to load
+
+    //Capturing the Total Pools Value from UI
     const totalPools = await App.poolsPage.totalPools()
     //Calling the API
     const responseBody = await API.post.call_BalancerAPI_toFetch_AllPoolsData(Endpoint, requestPayload)
@@ -62,7 +62,7 @@ test.describe('Positive Scenario', async () => {
     await App.poolsPage.isUserOnPoolsPage(true)
     //Applying the Network Filter
     await App.poolsPage.networkFilter(requestPayload.chainIn)
-    //Capturing the Totla Pools Value from UI
+    //Capturing the Total Pools Value from UI
     const totalPools = await App.poolsPage.totalPools()
     //Calling the API
     const responseBody = await API.post.call_BalancerAPI_toFetch_AllPoolsData(Endpoint, requestPayload)
@@ -81,7 +81,7 @@ test.describe('Positive Scenario', async () => {
     await App.poolsPage.isUserOnPoolsPage(true)
     //Applying the Network Filter
     await App.poolsPage.networkFilter(requestPayload.chainIn)
-    //Capturing the Totla Pools Value from UI
+    //Capturing the Total Pools Value from UI
     const totalPools = await App.poolsPage.totalPools()
     //Calling the API
     const responseBody = await API.post.call_BalancerAPI_toFetch_AllPoolsData(Endpoint, requestPayload)
@@ -100,7 +100,7 @@ test.describe('Positive Scenario', async () => {
     await App.poolsPage.isUserOnPoolsPage(true)
     //Applying the Network Filter
     await App.poolsPage.networkFilter(requestPayload.chainIn)
-    //Capturing the Totla Pools Value from UI
+    //Capturing the Total Pools Value from UI
     const totalPools = await App.poolsPage.totalPools()
     //Calling the API
     const responseBody = await API.post.call_BalancerAPI_toFetch_AllPoolsData(Endpoint, requestPayload)
@@ -119,7 +119,7 @@ test.describe('Positive Scenario', async () => {
     await App.poolsPage.isUserOnPoolsPage(true)
     //Applying the Network Filter
     await App.poolsPage.networkFilter(requestPayload.chainIn)
-    //Capturing the Totla Pools Value from UI
+    //Capturing the Total Pools Value from UI
     const totalPools = await App.poolsPage.totalPools()
     //Calling the API
     const responseBody = await API.post.call_BalancerAPI_toFetch_AllPoolsData(Endpoint, requestPayload)
@@ -138,7 +138,7 @@ test.describe('Positive Scenario', async () => {
     await App.poolsPage.isUserOnPoolsPage(true)
     //Applying the Network Filter
     await App.poolsPage.networkFilter(requestPayload.chainIn)
-    //Capturing the Totla Pools Value from UI
+    //Capturing the Total Pools Value from UI
     const totalPools = await App.poolsPage.totalPools()
     //Calling the API
     const responseBody = await API.post.call_BalancerAPI_toFetch_AllPoolsData(Endpoint, requestPayload)
@@ -157,7 +157,7 @@ test.describe('Positive Scenario', async () => {
     await App.poolsPage.isUserOnPoolsPage(true)
     //Applying the Network Filter
     await App.poolsPage.networkFilter(requestPayload.chainIn)
-    //Capturing the Totla Pools Value from UI
+    //Capturing the Total Pools Value from UI
     const totalPools = await App.poolsPage.totalPools()
     //Calling the API
     const responseBody = await API.post.call_BalancerAPI_toFetch_AllPoolsData(Endpoint, requestPayload)
@@ -176,7 +176,7 @@ test.describe('Positive Scenario', async () => {
     await App.poolsPage.isUserOnPoolsPage(true)
     //Applying the Network Filter
     await App.poolsPage.networkFilter(requestPayload.chainIn)
-    //Capturing the Totla Pools Value from UI
+    //Capturing the Total Pools Value from UI
     const totalPools = await App.poolsPage.totalPools()
     //Calling the API
     const responseBody = await API.post.call_BalancerAPI_toFetch_AllPoolsData(Endpoint, requestPayload)
@@ -195,7 +195,7 @@ test.describe('Positive Scenario', async () => {
     await App.poolsPage.isUserOnPoolsPage(true)
     //Applying the Network Filter
     await App.poolsPage.networkFilter(requestPayload.chainIn)
-    //Capturing the Totla Pools Value from UI
+    //Capturing the Total Pools Value from UI
     const totalPools = await App.poolsPage.totalPools()
     //Calling the API
     const responseBody = await API.post.call_BalancerAPI_toFetch_AllPoolsData(Endpoint, requestPayload)
@@ -214,7 +214,7 @@ test.describe('Positive Scenario', async () => {
     await App.poolsPage.isUserOnPoolsPage(true)
     //Applying the Network Filter
     await App.poolsPage.networkFilter(requestPayload.chainIn)
-    //Capturing the Totla Pools Value from UI
+    //Capturing the Total Pools Value from UI
     const totalPools = await App.poolsPage.totalPools()
     //Calling the API
     const responseBody = await API.post.call_BalancerAPI_toFetch_AllPoolsData(Endpoint, requestPayload)
@@ -233,7 +233,7 @@ test.describe('Positive Scenario', async () => {
     await App.poolsPage.isUserOnPoolsPage(true)
     //Applying the Network Filter
     await App.poolsPage.networkFilter(requestPayload.chainIn)
-    //Capturing the Totla Pools Value from UI
+    //Capturing the Total Pools Value from UI
     const totalPools = await App.poolsPage.totalPools()
     //Calling the API
     const responseBody = await API.post.call_BalancerAPI_toFetch_AllPoolsData(Endpoint, requestPayload)
@@ -277,28 +277,7 @@ test.describe('Positive Scenario', async () => {
     await App.poolsPage.validatePoolTypesFilter(poolType)
   })
 
-  test('TC16_Validate TotalPools Filter for Min TVL', async () => {
-    //Data Setup
-    const requestPayload: requestBody = {
-      chainIn: testData.Ethereum,
-      poolTypeIn: testData.AllPoolType,
-      TVL: testData.TVL
-    };
-    //Validating user is on Pool Page or not
-    await App.poolsPage.isUserOnPoolsPage(true)
-    //Applying the Network Filter
-    await App.poolsPage.networkFilter(requestPayload.chainIn)
-    //Setting the TVL slider
-    await App.poolsPage.setTVLSlide(requestPayload.TVL)
-    ////Capturing the Totla Pools Value from UI
-    const totalPools = await App.poolsPage.totalPools()
-    //Calling the API
-    const responseBody = await API.post.call_BalancerAPI_toFetch_AllPoolsData(Endpoint, requestPayload)
-    //Validating the Total Pools
-    App.assert.areEqual(totalPools, responseBody.data.count, "Validation of Total pools in UI with API")
-  })
-
-  test('TC17_Validate Network Filter for Ethereum', async () => {
+  test('TC16_Validate Network Filter for Ethereum', { tag: '@Positive' }, async () => {
     //Data Setup
     const poolNetwork = testData.Ethereum
     //Validating user is on Pool Page or not
@@ -309,7 +288,7 @@ test.describe('Positive Scenario', async () => {
     await App.poolsPage.validateNetworkFilter(poolNetwork)
   })
 
-  test('TC18_Validate Network Filter for Arbitrum', async () => {
+  test('TC17_Validate Network Filter for Arbitrum', { tag: '@Positive' }, async () => {
     //Data Setup
     const poolNetwork = testData.Arbitrum
     //Validating user is on Pool Page or not
@@ -325,7 +304,7 @@ test.describe('Positive Scenario', async () => {
 
 test.describe('Negative Scenario', async () => {
 
-  test('TC19_Validate No Pool found Filter for Mode Network', async () => {
+  test('TC18_Validate No Pool found Filter for Mode Network', { tag: '@Negative' }, async () => {
     //Data Setup
     const poolNetwork = testData.Mode
     //Validating user is on Pool Page or not

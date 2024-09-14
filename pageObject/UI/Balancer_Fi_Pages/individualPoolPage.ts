@@ -99,6 +99,8 @@ export class individualPoolPage {
             await this.page.locator(this.poolType_loc).scrollIntoViewIfNeeded()
             const UIPoolType = await this.page.locator(this.poolType_loc).textContent()
             console.log(UIPoolType);
+            if (type.toLowerCase() == "composable_stable")
+                type = 'stable'
             expect(UIPoolType?.toLowerCase()).toEqual(type.toLowerCase())
             await takeScreenshot(this.page, "Pool Type")
         })
