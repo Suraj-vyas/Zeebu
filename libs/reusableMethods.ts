@@ -1,6 +1,4 @@
 import { Page } from "@playwright/test";
-import path from "path";
-import { Url } from "url";
 
 export class resuableMethods {
 
@@ -10,6 +8,7 @@ export class resuableMethods {
     }
 
     async NavigateToUrl(url: string) {
+        await this.page.setViewportSize({ width: 1610, height: 882 })
         await this.page.goto(url, { waitUntil: 'domcontentloaded' })
         await this.page.waitForTimeout(5000)
     }

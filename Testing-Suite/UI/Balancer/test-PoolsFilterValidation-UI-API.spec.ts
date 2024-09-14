@@ -38,12 +38,15 @@ test.describe('Positive Scenario', async () => {
       poolTypeIn: testData.AllPoolType,
       TVL: "0"
     };
-    //Validating the UI
+    //Validating user is on Pool Page or not
     await App.poolsPage.isUserOnPoolsPage(true)
+    //Applying the Network Filter
     await App.poolsPage.networkFilter(requestPayload.chainIn)
+    //Capturing the Totla Pools Value from UI
     const totalPools = await App.poolsPage.totalPools()
+    //Calling the API
     const responseBody = await API.post.call_BalancerAPI_toFetch_AllPoolsData(Endpoint, requestPayload)
-    // console.log(responseBody.data.count);
+    //Validating the Total Pools
     App.assert.areEqual(totalPools, responseBody.data.count, "Validation of Total pools in UI with API")
 
   })
@@ -55,16 +58,16 @@ test.describe('Positive Scenario', async () => {
       poolTypeIn: testData.AllPoolType,
       TVL: "0"
     };
-    //Validating the UI
+    //Validating user is on Pool Page or not
     await App.poolsPage.isUserOnPoolsPage(true)
+    //Applying the Network Filter
     await App.poolsPage.networkFilter(requestPayload.chainIn)
+    //Capturing the Totla Pools Value from UI
     const totalPools = await App.poolsPage.totalPools()
     //Calling the API
     const responseBody = await API.post.call_BalancerAPI_toFetch_AllPoolsData(Endpoint, requestPayload)
-    // console.log(responseBody.data.count);
-    //Validating the Values of Total Pools
+    //Validating the Total Pools
     App.assert.areEqual(totalPools, responseBody.data.count, "Validation of Total pools in UI with API")
-
   })
 
   test('TC3_Validate TotalPools for Arbitrum', { tag: '@Positive' }, async () => {
@@ -74,14 +77,15 @@ test.describe('Positive Scenario', async () => {
       poolTypeIn: testData.AllPoolType,
       TVL: "0"
     };
-    //Validating the UI
+    //Validating user is on Pool Page or not
     await App.poolsPage.isUserOnPoolsPage(true)
+    //Applying the Network Filter
     await App.poolsPage.networkFilter(requestPayload.chainIn)
+    //Capturing the Totla Pools Value from UI
     const totalPools = await App.poolsPage.totalPools()
     //Calling the API
     const responseBody = await API.post.call_BalancerAPI_toFetch_AllPoolsData(Endpoint, requestPayload)
-    // console.log(responseBody.data.count);
-    //Validating the Values of Total Pools
+    //Validating the Total Pools
     App.assert.areEqual(totalPools, responseBody.data.count, "Validation of Total pools in UI with API")
   })
 
@@ -92,14 +96,15 @@ test.describe('Positive Scenario', async () => {
       poolTypeIn: testData.AllPoolType,
       TVL: "0"
     };
-    //Validating the UI
+    //Validating user is on Pool Page or not
     await App.poolsPage.isUserOnPoolsPage(true)
+    //Applying the Network Filter
     await App.poolsPage.networkFilter(requestPayload.chainIn)
+    //Capturing the Totla Pools Value from UI
     const totalPools = await App.poolsPage.totalPools()
     //Calling the API
     const responseBody = await API.post.call_BalancerAPI_toFetch_AllPoolsData(Endpoint, requestPayload)
-    // console.log(responseBody.data.count);
-    //Validating the Values of Total Pools
+    //Validating the Total Pools
     App.assert.areEqual(totalPools, responseBody.data.count, "Validation of Total pools in UI with API")
   })
 
@@ -110,14 +115,15 @@ test.describe('Positive Scenario', async () => {
       poolTypeIn: testData.AllPoolType,
       TVL: "0"
     };
-    //Validating the UI
+    //Validating user is on Pool Page or not
     await App.poolsPage.isUserOnPoolsPage(true)
+    //Applying the Network Filter
     await App.poolsPage.networkFilter(requestPayload.chainIn)
+    //Capturing the Totla Pools Value from UI
     const totalPools = await App.poolsPage.totalPools()
     //Calling the API
     const responseBody = await API.post.call_BalancerAPI_toFetch_AllPoolsData(Endpoint, requestPayload)
-    // console.log(responseBody.data.count);
-    //Validating the Values of Total Pools
+    //Validating the Total Pools
     App.assert.areEqual(totalPools, responseBody.data.count, "Validation of Total pools in UI with API")
   })
 
@@ -128,14 +134,15 @@ test.describe('Positive Scenario', async () => {
       poolTypeIn: testData.AllPoolType,
       TVL: "0"
     };
-    //Validating the UI
+    //Validating user is on Pool Page or not
     await App.poolsPage.isUserOnPoolsPage(true)
+    //Applying the Network Filter
     await App.poolsPage.networkFilter(requestPayload.chainIn)
+    //Capturing the Totla Pools Value from UI
     const totalPools = await App.poolsPage.totalPools()
     //Calling the API
     const responseBody = await API.post.call_BalancerAPI_toFetch_AllPoolsData(Endpoint, requestPayload)
-    // console.log(responseBody.data.count);
-    //Validating the Values of Total Pools
+    //Validating the Total Pools
     App.assert.areEqual(totalPools, responseBody.data.count, "Validation of Total pools in UI with API")
   })
 
@@ -146,14 +153,15 @@ test.describe('Positive Scenario', async () => {
       poolTypeIn: testData.AllPoolType,
       TVL: "0"
     };
-    //Validating the UI
+    //Validating user is on Pool Page or not
     await App.poolsPage.isUserOnPoolsPage(true)
+    //Applying the Network Filter
     await App.poolsPage.networkFilter(requestPayload.chainIn)
+    //Capturing the Totla Pools Value from UI
     const totalPools = await App.poolsPage.totalPools()
     //Calling the API
     const responseBody = await API.post.call_BalancerAPI_toFetch_AllPoolsData(Endpoint, requestPayload)
-    // console.log(responseBody.data.count);
-    //Validating the Values of Total Pools
+    //Validating the Total Pools
     App.assert.areEqual(totalPools, responseBody.data.count, "Validation of Total pools in UI with API")
   })
 
@@ -164,14 +172,15 @@ test.describe('Positive Scenario', async () => {
       poolTypeIn: testData.AllPoolType,
       TVL: "0"
     };
-    //Validating the UI
+    //Validating user is on Pool Page or not
     await App.poolsPage.isUserOnPoolsPage(true)
+    //Applying the Network Filter
     await App.poolsPage.networkFilter(requestPayload.chainIn)
+    //Capturing the Totla Pools Value from UI
     const totalPools = await App.poolsPage.totalPools()
     //Calling the API
     const responseBody = await API.post.call_BalancerAPI_toFetch_AllPoolsData(Endpoint, requestPayload)
-    // console.log(responseBody.data.count);
-    //Validating the Values of Total Pools
+    //Validating the Total Pools
     App.assert.areEqual(totalPools, responseBody.data.count, "Validation of Total pools in UI with API")
   })
 
@@ -182,14 +191,15 @@ test.describe('Positive Scenario', async () => {
       poolTypeIn: testData.AllPoolType,
       TVL: "0"
     };
-    //Validating the UI
+    //Validating user is on Pool Page or not
     await App.poolsPage.isUserOnPoolsPage(true)
+    //Applying the Network Filter
     await App.poolsPage.networkFilter(requestPayload.chainIn)
+    //Capturing the Totla Pools Value from UI
     const totalPools = await App.poolsPage.totalPools()
     //Calling the API
     const responseBody = await API.post.call_BalancerAPI_toFetch_AllPoolsData(Endpoint, requestPayload)
-    // console.log(responseBody.data.count);
-    //Validating the Values of Total Pools
+    //Validating the Total Pools
     App.assert.areEqual(totalPools, responseBody.data.count, "Validation of Total pools in UI with API")
   })
 
@@ -200,14 +210,15 @@ test.describe('Positive Scenario', async () => {
       poolTypeIn: testData.AllPoolType,
       TVL: "0"
     };
-    //Validating the UI
+    //Validating user is on Pool Page or not
     await App.poolsPage.isUserOnPoolsPage(true)
+    //Applying the Network Filter
     await App.poolsPage.networkFilter(requestPayload.chainIn)
+    //Capturing the Totla Pools Value from UI
     const totalPools = await App.poolsPage.totalPools()
     //Calling the API
     const responseBody = await API.post.call_BalancerAPI_toFetch_AllPoolsData(Endpoint, requestPayload)
-    // console.log(responseBody.data.count);
-    //Validating the Values of Total Pools
+    //Validating the Total Pools
     App.assert.areEqual(totalPools, responseBody.data.count, "Validation of Total pools in UI with API")
   })
 
@@ -218,67 +229,113 @@ test.describe('Positive Scenario', async () => {
       poolTypeIn: testData.AllPoolType,
       TVL: "0"
     };
-    //Validating the UI
+    //Validating user is on Pool Page or not
     await App.poolsPage.isUserOnPoolsPage(true)
+    //Applying the Network Filter
     await App.poolsPage.networkFilter(requestPayload.chainIn)
+    //Capturing the Totla Pools Value from UI
     const totalPools = await App.poolsPage.totalPools()
     //Calling the API
     const responseBody = await API.post.call_BalancerAPI_toFetch_AllPoolsData(Endpoint, requestPayload)
-    // console.log(responseBody.data.count);
-    //Validating the Values of Total Pools
+    //Validating the Total Pools
     App.assert.areEqual(totalPools, responseBody.data.count, "Validation of Total pools in UI with API")
   })
 
   test('TC12_Validate PoolType Filter for Weighted', { tag: '@Positive' }, async () => {
     //Data Setup
     const poolType = testData.Weighted
-    //Validating the UI
+    //Validating user is on Pool Page or not
     await App.poolsPage.isUserOnPoolsPage(true)
+    //Validating the Pool type filter in UI
     await App.poolsPage.validatePoolTypesFilter(poolType)
   })
 
   test('TC13_Validate PoolType Filter for Stable', { tag: '@Positive' }, async () => {
     //Data Setup
     const poolType = testData.Stable
-    //Validating the UI
+    //Validating user is on Pool Page or not
     await App.poolsPage.isUserOnPoolsPage(true)
+    //Validating the Pool type filter in UI
     await App.poolsPage.validatePoolTypesFilter(poolType)
   })
 
   test('TC14_Validate PoolType Filter for LBP', { tag: '@Positive' }, async () => {
     //Data Setup
     const poolType = testData.LBP
-    //Validating the UI
+    //Validating user is on Pool Page or not
     await App.poolsPage.isUserOnPoolsPage(true)
+    //Validating the Pool type filter in UI
     await App.poolsPage.validatePoolTypesFilter(poolType)
   })
 
   test('TC15_Validate PoolType Filter for Cow', { tag: '@Positive' }, async () => {
     //Data Setup
     const poolType = testData.Cow
-    //Validating the UI
+    //Validating user is on Pool Page or not
     await App.poolsPage.isUserOnPoolsPage(true)
+    //Validating the Pool type filter in UI
     await App.poolsPage.validatePoolTypesFilter(poolType)
   })
 
-  test('TC16_Validate TotalPools Filter for Min TVL', async ({ page }) => {
+  test('TC16_Validate TotalPools Filter for Min TVL', async () => {
     //Data Setup
     const requestPayload: requestBody = {
       chainIn: testData.Ethereum,
       poolTypeIn: testData.AllPoolType,
       TVL: testData.TVL
     };
+    //Validating user is on Pool Page or not
     await App.poolsPage.isUserOnPoolsPage(true)
+    //Applying the Network Filter
     await App.poolsPage.networkFilter(requestPayload.chainIn)
+    //Setting the TVL slider
     await App.poolsPage.setTVLSlide(requestPayload.TVL)
+    ////Capturing the Totla Pools Value from UI
     const totalPools = await App.poolsPage.totalPools()
+    //Calling the API
     const responseBody = await API.post.call_BalancerAPI_toFetch_AllPoolsData(Endpoint, requestPayload)
+    //Validating the Total Pools
     App.assert.areEqual(totalPools, responseBody.data.count, "Validation of Total pools in UI with API")
+  })
+
+  test('TC17_Validate Network Filter for Ethereum', async () => {
+    //Data Setup
+    const poolNetwork = testData.Ethereum
+    //Validating user is on Pool Page or not
+    await App.poolsPage.isUserOnPoolsPage(true)
+    //Applying the network Filter
+    await App.poolsPage.networkFilter(poolNetwork)
+    //Validating the network filter
+    await App.poolsPage.validateNetworkFilter(poolNetwork)
+  })
+
+  test('TC18_Validate Network Filter for Arbitrum', async () => {
+    //Data Setup
+    const poolNetwork = testData.Arbitrum
+    //Validating user is on Pool Page or not
+    await App.poolsPage.isUserOnPoolsPage(true)
+    //Applying the network Filter
+    await App.poolsPage.networkFilter(poolNetwork)
+    //Validating the network filter
+    await App.poolsPage.validateNetworkFilter(poolNetwork)
   })
 
 })
 
 
 test.describe('Negative Scenario', async () => {
+
+  test('TC19_Validate No Pool found Filter for Mode Network', async () => {
+    //Data Setup
+    const poolNetwork = testData.Mode
+    //Validating user is on Pool Page or not
+    await App.poolsPage.isUserOnPoolsPage(true)
+    //Applying the network Filter
+    await App.poolsPage.networkFilter(poolNetwork)
+    //Validating the network filter
+    await App.poolsPage.poolTypesFilter(testData.Cow)
+    //Validate No Pools Found
+    await App.poolPage.validateNoPoolFound()
+  })
 
 })

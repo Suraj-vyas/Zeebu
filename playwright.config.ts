@@ -19,18 +19,32 @@ export default defineConfig({
   /* Retry on CI only */
   retries: process.env.CI ? 2 : 0,
   /* Opt out of parallel tests on CI. */
-  workers: process.env.CI ? 1 : undefined,
+  workers: process.env.CI ? 4 : undefined,
   /* Reporter to use. See https://playwright.dev/docs/test-reporters */
-  reporter: 'html',
+  reporter: [['html'], ['playwright-html', {
+    testFolder: 'Testing-Suite',
+    title: 'Zeebu UI and API Test Execution HTML Report',
+    project: 'QA Tests',
+    release: '24.09',
+    testEnvironment: 'Prod',
+    embedAssets: true,
+    embedAttachments: true,
+    outputFolder: 'playwright-html-report',
+    startServer: true,
+    consoleLog: true,
+    consoleError: true,
+    consoleTestOutput: false,
+    theme: 'light',
+  }]],
   /* Shared settings for all the projects below. See https://playwright.dev/docs/api/class-testoptions. */
   use: {
     /* Base URL to use in actions like `await page.goto('/')`. */
     // baseURL: 'http://127.0.0.1:3000',
 
     /* Collect trace when retrying the failed test. See https://playwright.dev/docs/trace-viewer */
-    trace: 'on-first-retry',
+    trace: 'off',
     headless: false,  // Set to false to run in visible mode
-    viewport: null,
+    viewport: { width: 1710, height: 982 },
   },
 
   /* Configure projects for major browsers */
