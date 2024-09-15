@@ -1,7 +1,7 @@
 import { test, Page, expect, } from "@playwright/test"
-import { app } from "../../../pageObject/UI/App"
-import * as testData from "../../../data/API/balancerGraphQL/API_TestData.json"
-import { api } from "../../../pageObject/API/API"
+import { app } from "../pageObject/UI/App"
+import * as testData from "../data/API/balancerGraphQL/API_TestData.json"
+import { api } from "../pageObject/API/API"
 
 let App: app
 var API: api
