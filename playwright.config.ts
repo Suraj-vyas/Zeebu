@@ -32,7 +32,7 @@ export default defineConfig({
     embedAssets: true,
     embedAttachments: true,
     outputFolder: 'playwright-html-report',
-    startServer: true,
+    startServer: false,
     consoleLog: true,
     consoleError: true,
     consoleTestOutput: false,
