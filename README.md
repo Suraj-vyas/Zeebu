@@ -3,7 +3,7 @@
 ## Overview
 
 This repository contains an UI/API test cases of :
-1. Balancer Pools Page for Ethereum, Avalanche, Arbitrum and many more.
+1. Balancer Pools Page Validation for Ethereum, Avalanche, Arbitrum and many more.
 2. Balancer Individual Pool page Validation
 3. Balancer API's data validation with UI
 
